@@ -1,13 +1,15 @@
 'use client'
 import Hero from "@/components/Home/Hero";
 import Category from "@/components/Home/Category";
-import {getAllProducts} from "@/request/request";
+import {getAllProducts, getProductByCategory} from "@/request/request";
 import {Product} from "@/typing";
 import {useEffect, useState} from "react";
 import {Loader} from "lucide-react";
 import ProductCard from "@/components/Helper/ProductCards/ProductCard";
+import category from "@/components/Home/Category";
 
-const AllProduct = () => {
+const AllProduct =  ({params}:{params:{category:string}}) => {
+    const decodedCategory = decodeURIComponent(params.category)
     const [products, setProducts] = useState<Product[] | null>(null)
     const [loading, setLoading] = useState(true)
 
@@ -15,8 +17,9 @@ const AllProduct = () => {
         const getData = async () => {
             setLoading(true)
             try {
-                const products: Product[] = await getAllProducts()
+                const products: Product[] = await getProductByCategory(params.category)
                 setProducts(products)
+                console.log(products)
             } catch (err) {
                 console.log(err)
             } finally {
@@ -30,7 +33,7 @@ const AllProduct = () => {
 
     return (
         <div className="pt-6 pb-12 ">
-            <h1 className="text-cyan-900 font-bold text-2xl text-center">All products</h1>
+            <h1 className="text-cyan-900 font-bold text-2xl text-center">{decodedCategory} Items</h1>
             {loading ? (
                 <div className="flex justify-center items-center mt-16">
                     <Loader size={32} className="animate-spin"/>

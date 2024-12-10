@@ -8,7 +8,7 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const Nav = () => {
     return (
-        <div className="flex justify-evenly items-center h-[10vh] w-full max-w-full sticky top-0 z-50 shadow-lg bg-[#f2eef7]">
+        <div className="flex justify-evenly items-center h-[10vh] w-full max-w-full sticky top-0 z-50 shadow-lg bg-[#e5ddee]">
 
             <div className="flex items-center space-x-2 ml-[3vw]">
                 <Link href="/" className="flex items-center space-x-2">
@@ -20,7 +20,7 @@ const Nav = () => {
                             objectFit="contain"
                         />
                     </div>
-                    <h2 className="text-lg md:text-xl lg:text-2xl text-cyan-900">
+                    <h2 className="text-lg  md:text-2xl lg:text-3xl text-cyan-900">
                         Ogari Shop
                     </h2>
                 </Link>

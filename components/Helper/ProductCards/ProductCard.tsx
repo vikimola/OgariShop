@@ -9,18 +9,29 @@ import React from "react";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {CiHeart} from "react-icons/ci";
+import {useDispatch, useSelector} from "react-redux";
+import {addItem} from "@/store/cartSlice";
+import {RootState} from "@/store/store";
+import {useToast} from "@/hooks/use-toast";
+import {ToastAction} from "@radix-ui/react-toast";
+import useCart from "@/components/Helper/useCart";
 
 
 type Props = {
     product: Product
 }
 
+
 const ProductCard = ({product}: Props) => {
+
     const num = Math.round(product.rating.rate)
     const ratingArr = new Array(5).fill(0)
+    const {addToCart} = useCart()
+
+
     return (
         <div key={product.id}
-             className="p-4 height-[150px] width-[170px]  flex flex-col justify-between items-center rounded-xl ">
+             className="p-4 height-[150px] width-[200px]  flex flex-col justify-between items-center rounded-xl ">
 
             <Link href={`/product/product-details/${product.id}`}>
                 <h4 className=" rounded-lg cursor-pointer text-center hover:scale-110 transition-all duration-300 text-cyan-900 line-clamp-2 ">{product.title}</h4>
@@ -56,8 +67,9 @@ const ProductCard = ({product}: Props) => {
             </div>
 
             <div className=" w-[80%] flex justify-evenly items-center">
-                <Button className="bg-cyan-500 hover:bg-cyan-700 w-[40%]"><FaShoppingBasket size={20}/></Button>
-                <Button className="bg-[#d9cde7] hover:bg-[#8964b5] w-[40%]"><FaRegHeart size={20}/></Button>
+                <Button className="bg-cyan-500 hover:bg-cyan-700 w-[40%]"
+                        onClick={() => addToCart(product)}><FaShoppingBasket size={20}/></Button>
+                <Button className="bg-[#d9cde7] hover:bg-[#a386c5] w-[40%]"><FaRegHeart size={20}/></Button>
             </div>
 
         </div>

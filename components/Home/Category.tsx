@@ -1,4 +1,6 @@
 import {getAllCategory} from "@/request/request";
+import React from "react";
+import Link from "next/link";
 
 const Category = async () =>{
     const categories:string[] = await getAllCategory()
@@ -7,9 +9,11 @@ const Category = async () =>{
             <h1 className="text-center font-bold text-2xl capitalize text-cyan-900 ">Shop by Category</h1>
             <div className="mt-12 w-4/5 mx-auto grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {categories.map((category) => {
-              return(<div key={category} className="m-2 p-2 rounded-lg cursor-pointer text-center hover:scale-110 transition-all duration-300 text-cyan-700 bg-[#e5ddee] shadow-md">
-                    <h1 className="text-sm sm:text-base md:text-lg capitalize font-bold">{category}</h1>
-                </div>)
+              return(<Link key={category} href={`/category/${category}`} passHref>
+        <div className="m-2 p-2 rounded-lg cursor-pointer text-center hover:scale-110 transition-all duration-300 text-cyan-700 bg-[#e5ddee] shadow-md">
+          <h1 className="text-sm sm:text-base md:text-lg capitalize font-bold">{category}</h1>
+        </div>
+      </Link>)
             })}
         </div></div>
     )

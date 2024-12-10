@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {getProductByCategory, getSingleProduct} from "@/request/request";
 import {Product} from "@/typing"
@@ -8,18 +9,20 @@ import {Button} from "@/components/ui/button";
 import {IoCheckmarkDoneCircle} from "react-icons/io5";
 import {FiPackage} from "react-icons/fi";
 import {TbTruckDelivery} from "react-icons/tb";
-import AddCart from "@/app/(root)/product/product-details/[id]/add-cart";
+import ProductCard from "@/components/Helper/ProductCards/ProductCard";
+import useCart from "@/components/Helper/useCart";
 import AddToCart from "@/app/(root)/product/product-details/[id]/add-cart";
-import ProductCard from "@/components/Helper/ProductCard";
 
 const ProductDetails = async ({params}: { params: { id: string } }) => {
     const id = params.id;
     const product: Product = await getSingleProduct(id);
+    console.log(product)
     const relatedProduct: Product[] = await getProductByCategory(product.category)
     console.log(relatedProduct)
 
     const num = Math.round(product?.rating.rate)
     const starArr: number[] = new Array(5).fill(0)
+
 
 
     return (
@@ -58,7 +61,11 @@ const ProductDetails = async ({params}: { params: { id: string } }) => {
                         <p>{product.price} €</p>
                     </div>
                     <br/>
-                    <AddToCart/>
+
+
+                   <AddToCart product={product}/>
+
+
                     <br/>
                     <div className=" text-cyan-900">
                         <p><span className="font-bold ">Description:</span> {product.description}</p>
@@ -79,7 +86,8 @@ const ProductDetails = async ({params}: { params: { id: string } }) => {
             <div>
                 <h1 className="text-start font-bold text-xl  ml-6  text-cyan-900 ">Related Products</h1>
 
-                <div className="grid gap-12 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 items-center justify-center ">
+                <div
+                    className="grid gap-12 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 items-center justify-center ">
                     {relatedProduct.map(relatedProduct => (product.id !== relatedProduct.id &&
                         <div className="w-[14rem] flex justify-center items-center "><ProductCard
                             product={relatedProduct}/></div>))}
@@ -88,7 +96,7 @@ const ProductDetails = async ({params}: { params: { id: string } }) => {
             </div>
 
             <br/>
-
+            <br/>
 
             <div className="grid xs:grid-cols-1 md:grid-cols-3 text-cyan-900 md:text-lg">
                 <div className="flex justify-center items-center mb-4">
@@ -101,7 +109,7 @@ const ProductDetails = async ({params}: { params: { id: string } }) => {
                     <TbTruckDelivery size={25} className="mx-2 text-[#a386c5]"/> Fast delivery in max 4 working days
                 </div>
             </div>
-            <br/>
+
             <br/>
         </div>
     )

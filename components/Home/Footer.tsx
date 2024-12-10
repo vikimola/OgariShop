@@ -9,7 +9,11 @@ import {images} from "next/dist/build/webpack/config/blocks/images";
 const Footer = () => {
     return (
         <div>
+            <div className="flex items-center justify-center   ">
+                <hr className="h-px mb-1 w-[95vw]   border-0 bg-[#e5ddee] bg-opacity-75"/>
+            </div>
             <div className="grid gap-2 md:grid-cols-4 sm:grid-cols-2 xs:grid-cols-1 max-w-full ">
+
                 <div className="flex flex-col justify-center items-center ml-8 mr-8">
 
                     <div
@@ -94,7 +98,7 @@ const Footer = () => {
                         <Image
                             src="/images/bt.png"
                             alt="site logo"
-                            layout="fill"
+                            fill
                             objectFit="contain"
                         />
                     </div>

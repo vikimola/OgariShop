@@ -10,6 +10,9 @@ import {
 } from '@clerk/nextjs'
 import React from "react";
 import Footer from "@/components/Home/Footer";
+import StoreProvider from "@/StoreProvider/StoreProvider";
+import {Toaster} from "@/components/ui/toaster"
+import {ToastProvider} from "@/components/ui/toast";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -33,15 +36,20 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <ClerkProvider>
-            <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased ` }>
-            <Nav/>
-            {children}
-            <Footer/>
+        <StoreProvider>
+            <ClerkProvider>
 
-            </body>
-            </html>
-        </ClerkProvider>
+                    <html lang="en">
+                    <body className={`${geistSans.variable} ${geistMono.variable} antialiased `}>
+                    <Nav/>
+                    {children}
+                    <Toaster/>
+                    <Footer/>
+
+                    </body>
+                    </html>
+
+            </ClerkProvider>
+        </StoreProvider>
     );
 }
