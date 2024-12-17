@@ -1,12 +1,12 @@
 'use client'
 import Hero from "@/components/Home/Hero";
-import Category from "@/components/Home/Category";
+import Category from "@/components/Helper/Category";
 import {getAllProducts, getProductByCategory} from "@/request/request";
 import {Product} from "@/typing";
 import {useEffect, useState} from "react";
 import {Loader} from "lucide-react";
-import ProductCard from "@/components/Helper/ProductCards/ProductCard";
-import category from "@/components/Home/Category";
+import ProductCard from "@/components/Home/ProductCards/ProductCard";
+import category from "@/components/Helper/Category";
 
 const AllProduct =  ({params}:{params:{category:string}}) => {
     const decodedCategory = decodeURIComponent(params.category)

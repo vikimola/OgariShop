@@ -31,6 +31,8 @@ const useCart = () => {
             ),
             variant: "success"
         })
+
+
     }
 
     const removeFromCart=(id:number)=>{

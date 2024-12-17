@@ -4,8 +4,8 @@ import React from "react";
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
 import {Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger} from "@/components/ui/sheet";
-import ProductCard from "@/components/Helper/ProductCards/ProductCard";
-import CartSlidebar from "@/components/Helper/CartSlidebar";
+import ProductCard from "@/components/Home/ProductCards/ProductCard";
+import CartSlidebar from "@/components/Home/CartSlidebar";
 
 const ShoppingCartButton = () => {
 

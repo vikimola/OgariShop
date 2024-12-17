@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -5,11 +6,14 @@ import { CiHeart, CiUser } from "react-icons/ci";
 import SearchBox from "../Helper/SearchBox";
 import ShoppingCartButton from "@/components/Helper/ShoppingCartButton";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import CartHydrator from "@/components/Helper/CartHydrator";
 
 const Nav = () => {
-    return (
-        <div className="flex justify-evenly items-center h-[10vh] w-full max-w-full sticky top-0 z-50 shadow-lg bg-[#e5ddee]">
 
+    return (
+
+        <div className="flex justify-evenly items-center h-[10vh] w-full max-w-full sticky top-0 z-50 shadow-lg bg-[#e5ddee]">
+            <CartHydrator/>
             <div className="flex items-center space-x-2 ml-[3vw]">
                 <Link href="/" className="flex items-center space-x-2">
                     <div className="w-10 h-10 relative">

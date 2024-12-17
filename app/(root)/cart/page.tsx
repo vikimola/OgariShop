@@ -2,13 +2,14 @@
 import {CartItem} from "@/store/cartSlice";
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
-import SlidebarProductCard from "@/components/Helper/ProductCards/SlidebarProductCard";
+import SlidebarProductCard from "@/components/Home/ProductCards/SlidebarProductCard";
 import React, {useState} from "react";
 import Image from "next/image";
-import CartProductCard from "@/components/Helper/ProductCards/CartProductCard";
+import CartProductCard from "@/components/Home/ProductCards/CartProductCard";
 import TotalPrice from "@/components/Helper/TotalPrice";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
+import {useUser} from "@clerk/nextjs";
 
 const CartPage = () => {
 
@@ -19,15 +20,17 @@ const CartPage = () => {
 
     const totalPriceWithDelivery = (totalPrice + deliveryFee).toFixed(2)
 
+    const {user} = useUser()
+
 
     return (
-        <div className="text-cyan-900 min-h-[72vh]">
+        <div className="text-cyan-900 min-h-[72vh] flex flex-col justify-center items-center">
 
             <br/>
             <br/>
 
 
-            <div className="flex flex-col justify-around items-center gap-2 ">
+            <div className="flex flex-col justify-around items-center  gap-2 w-[80vw]">
                 {(items.length === 0) ?
                     <div>
                         <div className=" h-[80vh] w-[70vw]  relative  ">
@@ -68,7 +71,8 @@ const CartPage = () => {
 
                             <p className="text-cyan-800 text-3xl text-bold mt-4 ">Total: {totalPriceWithDelivery} €</p>
                             <br/>
-                            <Link href="/delivery" ><Button className="bg-[#d9cde7] hover:bg-[#a386c5] "> Next Step</Button></Link>
+                            {user && <Link href="/delivery" ><Button className="bg-[#d9cde7] hover:bg-[#a386c5] "> Next Step</Button></Link>}
+                            {!user && <Link href="/sign-in"><Button className="bg-cyan-500 hover:bg-cyan-700">Sign In </Button></Link>}
 
 
                         </div>

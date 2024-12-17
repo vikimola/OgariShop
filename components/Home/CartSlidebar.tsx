@@ -1,8 +1,8 @@
 import {SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle} from "@/components/ui/sheet";
-import ProductCard from "@/components/Helper/ProductCards/ProductCard";
+import ProductCard from "@/components/Home/ProductCards/ProductCard";
 import React from "react";
 import {CartItem} from "@/store/cartSlice";
-import SlidebarProductCard from "@/components/Helper/ProductCards/SlidebarProductCard";
+import SlidebarProductCard from "@/components/Home/ProductCards/SlidebarProductCard";
 import Image from "next/image";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";

@@ -1,6 +1,6 @@
 'use client'
 import Hero from "@/components/Home/Hero";
-import Category from "@/components/Home/Category";
+import Category from "@/components/Helper/Category";
 import AllProduct from "@/components/Home/AllProduct";
 import {Product} from "@/typing";
 import Image from "next/image";
@@ -14,7 +14,7 @@ import {addItem} from "@/store/cartSlice";
 import {RootState} from "@/store/store";
 import {useToast} from "@/hooks/use-toast";
 import {ToastAction} from "@radix-ui/react-toast";
-import useCart from "@/components/Helper/useCart";
+import useCart from "@/hooks/useCart";
 
 
 type Props = {

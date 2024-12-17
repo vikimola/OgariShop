@@ -7,7 +7,7 @@ import {Product} from "@/typing";
 import {addItem} from "@/store/cartSlice";
 import {useToast} from "@/hooks/use-toast";
 import Link from "next/link";
-import useCart from "@/components/Helper/useCart";
+import useCart from "@/hooks/useCart";
 
 
 const AddToCart = ({product}: { product: Product }) => {

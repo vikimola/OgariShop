@@ -1,11 +1,11 @@
 'use client'
 import Hero from "@/components/Home/Hero";
-import Category from "@/components/Home/Category";
+import Category from "@/components/Helper/Category";
 import {getAllProducts} from "@/request/request";
 import {Product} from "@/typing";
 import {useEffect, useState} from "react";
 import {Loader} from "lucide-react";
-import ProductCard from "@/components/Helper/ProductCards/ProductCard";
+import ProductCard from "@/components/Home/ProductCards/ProductCard";
 
 const AllProduct = () => {
     const [products, setProducts] = useState<Product[] | null>(null)

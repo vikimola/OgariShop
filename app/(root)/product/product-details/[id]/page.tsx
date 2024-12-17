@@ -9,8 +9,8 @@ import {Button} from "@/components/ui/button";
 import {IoCheckmarkDoneCircle} from "react-icons/io5";
 import {FiPackage} from "react-icons/fi";
 import {TbTruckDelivery} from "react-icons/tb";
-import ProductCard from "@/components/Helper/ProductCards/ProductCard";
-import useCart from "@/components/Helper/useCart";
+import ProductCard from "@/components/Home/ProductCards/ProductCard";
+import useCart from "@/hooks/useCart";
 import AddToCart from "@/app/(root)/product/product-details/[id]/add-cart";
 
 const ProductDetails = async ({params}: { params: { id: string } }) => {

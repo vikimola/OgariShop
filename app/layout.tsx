@@ -2,17 +2,14 @@ import type {Metadata} from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/Home/Nav";
-import {
-    ClerkProvider,
-    SignInButton,
-    SignedIn,
-    UserButton, SignedOut
-} from '@clerk/nextjs'
+import {ClerkProvider} from '@clerk/nextjs'
 import React from "react";
 import Footer from "@/components/Home/Footer";
 import StoreProvider from "@/StoreProvider/StoreProvider";
 import {Toaster} from "@/components/ui/toaster"
-import {ToastProvider} from "@/components/ui/toast";
+import {getFromLocalStorage} from "@/components/Helper/localStorage";
+import CartHydrator from "@/components/Helper/CartHydrator";
+import {PayPalButtons, PayPalScriptProvider} from "@paypal/react-paypal-js";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -35,6 +32,11 @@ export default function RootLayout({
                                    }: Readonly<{
     children: React.ReactNode;
 }>) {
+
+    const products = getFromLocalStorage("cart")
+    console.log(products)
+
+
     return (
         <StoreProvider>
             <ClerkProvider>
